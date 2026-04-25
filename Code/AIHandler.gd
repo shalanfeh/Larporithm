@@ -39,20 +39,23 @@ Genres:
 - health
 
 Rules:
-- Higher score means the title strongly fits that genre.
-- A title can score high in multiple genres.
-- Use only integers from 0 to 100.
-- Return only valid JSON.
-- Do not include markdown.
-- Do not include extra text.
+- The total MUST equal exactly 100.
+- Higher points = stronger match to that genre.
+- You may assign 0 to genres that do not apply.
+- Use only integers (no decimals).
+- Do not exceed 100 total points.
 
-Return this exact JSON structure:
+Return ONLY valid JSON in this exact format:
 {
-  "sports": 0,
-  "tech": 0,
-  "drama": 0,
-  "politics": 0,
-  "reason": "short explanation"
+	"education": 0,
+	"political": 0,
+	"gaming": 0,
+	"music": 0,
+	"drama": 0,
+	"sports":0,
+	"technology":0,
+	"health": 0,
+	"reason": "short explanation"
 }
 
 Player title: "%s"
