@@ -5,5 +5,8 @@ signal InputEntered(Entered: String)
 signal NewVideoDisplayed()
 signal ThumbnailDisplayed()
 
+signal EmotionChange()
 
-var GameState: GameState
+signal TimeChange()
+
+var GameValues: GameState
