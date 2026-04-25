@@ -7,4 +7,8 @@
 [node name="Node2D" parent="." unique_id=144102233 instance=ExtResource("1_c6gwx")]
 position = Vector2(402, 403)
 
+<<<<<<< Updated upstream
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1115358816]
+=======
+[node name="Node2D" type="Node2D" parent="Node2D" unique_id=581627261]
+>>>>>>> Stashed changes
