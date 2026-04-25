@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp5s5bv25g3a2"
-path="res://.godot/imported/Happy.png-855c52e6f7bab0e818b6140b40a9290e.ctex"
+uid="uid://cbl77q5whsl6a"
+path="res://.godot/imported/NeutralR.png-982ec3262a6de6fc4cfef0b083ff7440.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Happy.png"
-dest_files=["res://.godot/imported/Happy.png-855c52e6f7bab0e818b6140b40a9290e.ctex"]
+source_file="res://assets/NeutralR.png"
+dest_files=["res://.godot/imported/NeutralR.png-982ec3262a6de6fc4cfef0b083ff7440.ctex"]
 
 [params]
 
