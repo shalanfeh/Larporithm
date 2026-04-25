@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://die057oigyfu3"]
+
+[ext_resource type="Script" uid="uid://btx01t8ojgq0h" path="res://Scenes/testing/testing.gd" id="1_pwltj"]
+
+[node name="Skibidi" type="Node2D" unique_id=1114234189]
+script = ExtResource("1_pwltj")

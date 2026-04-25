@@ -9,4 +9,4 @@ signal EmotionChange()
 
 signal TimeChange()
 
-var GameValues: GameState
+var GameValues: GameState = GameState.new()

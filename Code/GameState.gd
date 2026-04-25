@@ -12,5 +12,5 @@ var CurrentlyDisplayingVideo: bool = false
 var ThumbnailDisplayed: bool = false
 var ThumbnailPosition: VideoPositions
 
-var Preference: Preferences
+var Preference: Preferences = Preferences.new()
 var EmotionScore: float = 50  #neutral

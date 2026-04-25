@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="Larporithm"
-run/main_scene="uid://xu806tmhap66"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
+<<<<<<<Updatedupstreamrun/main_scene="uid://xu806tmhap66"
 
 [autoload]
 
 Globals="*uid://ci8corhklinhm"
-ApiKeys="*uid://c3ufjjho2bixi"
 
 [physics]
 
