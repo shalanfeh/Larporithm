@@ -6,4 +6,3 @@ func _ready() -> void:
 	Globals.GameValues.Preference._Randomize()
 	print("randomization test:")
 	print(Globals.GameValues.Preference.preferences)
-	pass # Replace with function body.
