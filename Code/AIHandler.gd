@@ -26,11 +26,17 @@ func evaluate_title(title: String) -> void:
 	var prompt := """
 You are evaluating a player-created YouTube title for a game.
 
-Score the title from 0 to 100 for each genre:
-- sports
-- tech
+There are 8 genres. You must distribute a total of 100 points across all genres based on how strongly the title  fits each one
+
+Genres:
+- education
+- political
+- gaming
+- music
 - drama
-- politics
+- sports
+- technology
+- health
 
 Rules:
 - Higher score means the title strongly fits that genre.
@@ -54,7 +60,7 @@ Player title: "%s"
 
 	var url := "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent?key=%s" % [
 		MODEL,
-		APIKeys.AIKey
+		ApiKeys.AIKey
 	]
 
 	var body := {
