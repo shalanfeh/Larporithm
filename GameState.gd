@@ -1,6 +1,5 @@
 class_name GameState
 
-enum Emotions {HAPPY, SMILE, NEUTRAL, FROWN, MAD}
 enum VideoPositions {TOPLEFT, TOPRIGHT, BOTTOMLEFT, BOTTOMRIGHT}
 
 var TimeLeft: float = 60 #time left on timer
@@ -13,6 +12,5 @@ var CurrentlyDisplayingVideo: bool = false
 var ThumbnailDisplayed: bool = false
 var ThumbnailPosition: VideoPositions
 
-var Preferences = {
-	peak = 10
-}
+var Preference: Preferences
+var EmotionScore: float = 50  #neutral
