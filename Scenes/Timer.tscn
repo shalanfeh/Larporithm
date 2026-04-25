@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dt7ni6xcf7xmb"]
+
+[ext_resource type="Texture2D" uid="uid://dta10h3sipmig" path="res://assets/CircleWithHole.png" id="1_mdnnd"]
+[ext_resource type="Script" uid="uid://t8jyvjfkogm" path="res://Scenes/timer.gd" id="2_37beg"]
+
+[node name="Timer" type="TextureProgressBar" unique_id=63659985 node_paths=PackedStringArray("TimeKeeper")]
+value = 100.0
+fill_mode = 5
+texture_under = ExtResource("1_mdnnd")
+texture_progress = ExtResource("1_mdnnd")
+tint_under = Color(0.15487596, 0.154876, 0.15487596, 1)
+tint_progress = Color(0.37430018, 0.86552197, 3.85046e-07, 1)
+script = ExtResource("2_37beg")
+TimeKeeper = NodePath("Timer")
+TimeLeft = 10
+
+[node name="Timer" type="Timer" parent="." unique_id=1919282389]
+autostart = true
