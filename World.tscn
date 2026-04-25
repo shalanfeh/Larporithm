@@ -6,3 +6,5 @@
 
 [node name="Node2D" parent="." unique_id=144102233 instance=ExtResource("1_c6gwx")]
 position = Vector2(402, 403)
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1115358816]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dt7ni6xcf7xmb"]
 
 [ext_resource type="Texture2D" uid="uid://dta10h3sipmig" path="res://assets/CircleWithHole.png" id="1_mdnnd"]
-[ext_resource type="Script" uid="uid://t8jyvjfkogm" path="res://Scenes/timer.gd" id="2_37beg"]
+[ext_resource type="Script" uid="uid://t8jyvjfkogm" path="res://Scenes/Timer/timer.gd" id="2_37beg"]
 
 [node name="Timer" type="TextureProgressBar" unique_id=63659985 node_paths=PackedStringArray("TimeKeeper")]
 value = 100.0
