@@ -17,6 +17,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Globals="*uid://ci8corhklinhm"
+ApiKeys="*uid://c3ufjjho2bixi"
 
 [physics]
 
