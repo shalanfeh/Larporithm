@@ -2,8 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://dta10h3sipmig" path="res://assets/CircleWithHole.png" id="1_mdnnd"]
 [ext_resource type="Script" uid="uid://t8jyvjfkogm" path="res://Scenes/Timer/timer.gd" id="2_37beg"]
+[ext_resource type="AudioStream" uid="uid://30hi0bnlwbhj" path="res://assets/clock-tick-single-gfx-sounds-2-2-00-00.mp3" id="3_r2crm"]
 
-[node name="Timer" type="TextureProgressBar" unique_id=63659985 node_paths=PackedStringArray("TimeKeeper")]
+[sub_resource type="LabelSettings" id="LabelSettings_u2uyp"]
+font_size = 180
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 34
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[node name="Timer" type="TextureProgressBar" unique_id=63659985 node_paths=PackedStringArray("TimeKeeper", "Text", "SoundMaker")]
+offset_right = 500.0
+offset_bottom = 500.0
 value = 99.0
 fill_mode = 5
 texture_under = ExtResource("1_mdnnd")
@@ -12,6 +23,21 @@ tint_under = Color(0.15487596, 0.154876, 0.15487596, 1)
 tint_progress = Color(0.37430018, 0.86552197, 3.85046e-07, 1)
 script = ExtResource("2_37beg")
 TimeKeeper = NodePath("Timer")
+Text = NodePath("Label")
+SoundMaker = NodePath("AudioStreamPlayer")
 
 [node name="Timer" type="Timer" parent="." unique_id=1919282389]
 autostart = true
+
+[node name="Label" type="Label" parent="." unique_id=1501023438]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 500.0
+text = "60s
+"
+label_settings = SubResource("LabelSettings_u2uyp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=161980026]
+stream = ExtResource("3_r2crm")
