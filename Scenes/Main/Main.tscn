@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cx42470wsnygn"]
+
+[ext_resource type="Script" uid="uid://bs81lpbjpvknt" path="res://Scenes/Main/main.gd" id="1_aw1lf"]
+[ext_resource type="Texture2D" uid="uid://cy3carkr4n8l5" path="res://assets/DarkBiggerChecker2.png" id="2_5s61s"]
+[ext_resource type="Texture2D" uid="uid://dmtuo5qvslxqw" path="res://assets/16_9.png" id="3_7npjy"]
+[ext_resource type="PackedScene" uid="uid://bw801euqau31y" path="res://Scenes/start_menu.tscn" id="4_4vhfm"]
+[ext_resource type="PackedScene" uid="uid://dt7ni6xcf7xmb" path="res://Scenes/Timer/Timer.tscn" id="5_dvlhv"]
+[ext_resource type="PackedScene" uid="uid://d1ewovd4o2xga" path="res://Scenes/DoomScroller/doom_scroll.tscn" id="6_wgovn"]
+[ext_resource type="PackedScene" uid="uid://c6dnmfjahkox2" path="res://Scenes/Algorithm/algo_panel.tscn" id="7_cv8e0"]
+[ext_resource type="Script" uid="uid://g7awc1rvbdmd" path="res://Code/AIHandler.gd" id="8_5s61s"]
+[ext_resource type="PackedScene" uid="uid://c1ab0l8hfcsgh" path="res://Scenes/InfoBar.tscn" id="9_7npjy"]
+
+[node name="Main" type="Node2D" unique_id=269067533 node_paths=PackedStringArray("Scroller", "AIBro", "InfBar")]
+script = ExtResource("1_aw1lf")
+Scroller = NodePath("DoomScroll")
+AIBro = NodePath("AiGuy")
+InfBar = NodePath("Control")
+
+[node name="Background" type="TextureRect" parent="." unique_id=485689185]
+z_index = -100
+offset_left = -224.0
+offset_top = -171.0
+offset_right = 1399.0
+offset_bottom = 845.0
+texture = ExtResource("2_5s61s")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Background2" type="TextureRect" parent="." unique_id=334254182]
+z_index = -99
+z_as_relative = false
+offset_right = 1152.0
+offset_bottom = 649.0
+texture = ExtResource("3_7npjy")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="StartMenu" parent="." unique_id=854886031 instance=ExtResource("4_4vhfm")]
+top_level = true
+z_index = 100
+metadata/_edit_lock_ = true
+
+[node name="Timer" parent="." unique_id=63659985 instance=ExtResource("5_dvlhv")]
+offset_left = 1014.0
+offset_top = 505.0
+offset_right = 1134.0
+offset_bottom = 625.0
+
+[node name="DoomScroll" parent="." unique_id=1808220939 instance=ExtResource("6_wgovn")]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = 0.0
+grow_horizontal = 0
+metadata/_edit_lock_ = true
+
+[node name="AlgoPanel" parent="." unique_id=602969597 instance=ExtResource("7_cv8e0")]
+z_index = -10
+z_as_relative = false
+offset_left = 500.0
+offset_right = 500.0
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="AlgoPanel" unique_id=153027889]
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 648.0
+color = Color(0.101867564, 0.10186755, 0.10186755, 1)
+
+[node name="AiGuy" type="Node" parent="." unique_id=967294790]
+script = ExtResource("8_5s61s")
+
+[node name="Control" parent="." unique_id=1921314449 instance=ExtResource("9_7npjy")]
+offset_left = 500.0
+offset_top = 541.0
+offset_right = 500.0
+offset_bottom = 541.0

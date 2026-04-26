@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c1ab0l8hfcsgh"]
+
+[ext_resource type="Script" uid="uid://cl8rkardtrm3s" path="res://Scenes/InfoBar.gd" id="1_yea4h"]
+
+[node name="Control" type="Control" unique_id=1921314449 node_paths=PackedStringArray("Text")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yea4h")
+Text = NodePath("ColorRect/Label")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=376187096]
+layout_mode = 0
+offset_right = 502.0
+offset_bottom = 94.0
+color = Color(0, 0, 0, 0.48100004)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=753870854]
+layout_mode = 0
+offset_right = 501.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 18
+text = "Results appear here"
+autowrap_mode = 3

@@ -15,5 +15,21 @@ var CurrentlyDisplayingVideo: bool = false
 var ThumbnailDisplayed: bool = false
 var ThumbnailPosition: VideoPositions
 
-var Preference: Preferences = Preferences.new()
+var Preference: Preferences
+var AnalyticPreferences: Dictionary[String, int] = {
+	"drama" = 0,
+	"education" = 0,
+	"gaming" = 0,
+	"health" = 0,
+	"music" = 0,
+	"political" = 0,
+	"sports" = 0,
+	"technology" = 0
+}
+
 var EmotionScore: float = 50  #neutral
+
+var VideosWatched: int = 0
+
+func _init() -> void:
+	Preference = Preferences.new()

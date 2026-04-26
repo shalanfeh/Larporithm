@@ -115,7 +115,7 @@ func PlayTick():
 	SoundMaker.pitch_scale = randf_range(0.9, 1.1)
 	SoundMaker.play()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	LerpingVal = lerp(LerpingVal, Globals.GameValues.TimeLeft*Multiplier, 0.1)
 	value = LerpingVal
 	

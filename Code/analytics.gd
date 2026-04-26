@@ -1,26 +1,45 @@
 extends Control
 
-var genre_rows := {}
+@export_category("Progress Bars")
+@export var DramaBar: ProgressBar
+@export var EducationBar: ProgressBar
+@export var GamingBar: ProgressBar
+@export var HealthBar: ProgressBar
+@export var MusicBar: ProgressBar
+@export var PoliticalBar: ProgressBar
+@export var SportsBar: ProgressBar
+@export var TechnologyBar: ProgressBar
+
+var BarsArray: Dictionary[String, ProgressBar] = {
+	"drama" = DramaBar,
+	"education" = EducationBar,
+	"gaming" = GamingBar,
+	"health" = HealthBar,
+	"music" = MusicBar,
+	"political" = PoliticalBar,
+	"sports" = SportsBar,
+	"technology" = TechnologyBar
+}
 
 func _ready() -> void:
-	genre_rows = {
-		"education": $VBoxContainer/EducationRow/ProgressBar,
-		"political": $VBoxContainer/PoliticalRow/ProgressBar,
-		"gaming": $VBoxContainer/GamingRow/ProgressBar,
-		"music": $VBoxContainer/MusicRow/ProgressBar,
-		"drama": $VBoxContainer/DramaRow/ProgressBar,
-		"sports": $VBoxContainer/SportsRow/ProgressBar,
-		"technology": $VBoxContainer/TechnologyRow/ProgressBar,
-		"health": $VBoxContainer/HealthRow/ProgressBar
+	BarsArray = {
+		"drama" = DramaBar,
+		"education" = EducationBar,
+		"gaming" = GamingBar,
+		"health" = HealthBar,
+		"music" = MusicBar,
+		"political" = PoliticalBar,
+		"sports" = SportsBar,
+		"technology" = TechnologyBar
 	}
+	
+	
+	for key in BarsArray:
+		BarsArray[key].max_value = 0
+		BarsArray[key].value = Globals.GameValues.AnalyticPreferences[key]
 
-	Globals.AnalyticsChange.connect(update_bars)
-	update_bars()
 
-
-func update_bars() -> void:
-	var count = max(Globals.GameValues.VideosWatched, 1)
-
-	for genre in genre_rows.keys():
-		var average = float(Globals.GameValues.GenreTotals.get(genre, 0)) / float(count)
-		genre_rows[genre].value = clamp(average, 0, 100)
+func _process(_delta: float) -> void:
+	for key in BarsArray:
+		BarsArray[key].max_value = lerp(BarsArray[key].max_value, float(Globals.GameValues.VideosWatched), 0.1)
+		BarsArray[key].value = lerp(BarsArray[key].value, float(Globals.GameValues.AnalyticPreferences[key]), 0.1)

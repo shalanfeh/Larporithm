@@ -11,6 +11,19 @@ var preferences: Dictionary[String, int] = {
 	"health": 0
 }
 
+func _init() -> void:
+	preferences = {
+		"education": 0,
+		"political": 0,
+		"gaming": 0,
+		"music": 0,
+		"drama": 0,
+		"sports": 0,
+		"technology": 0,
+		"health": 0
+	}
+	_Randomize()
+
 func _Randomize() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()

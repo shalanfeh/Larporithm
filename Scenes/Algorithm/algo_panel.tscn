@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6dnmfjahkox2"]
 
-[ext_resource type="PackedScene" uid="uid://xu806tmhap66" path="res://Scenes/searchbar.tscn" id="1_fn47h"]
+[ext_resource type="PackedScene" uid="uid://xu806tmhap66" path="res://Scenes/SearchBar/searchbar.tscn" id="1_fn47h"]
 [ext_resource type="Shader" uid="uid://42xl7oebtjt3" path="res://Code/BalatroBG.gdshader" id="1_mk1p8"]
 [ext_resource type="PackedScene" uid="uid://u2j4wd8m3dai" path="res://Scenes/analytics.tscn" id="2_exmbs"]
 [ext_resource type="Texture2D" uid="uid://cy3carkr4n8l5" path="res://assets/DarkBiggerChecker2.png" id="4_50gf5"]
@@ -54,10 +54,10 @@ offset_bottom = -579.0
 [node name="Analytics (Control)" parent="AlgoPanel" unique_id=309233838 instance=ExtResource("2_exmbs")]
 z_index = 10
 layout_mode = 0
-offset_left = 163.0
-offset_top = 115.0
-offset_right = 203.0
-offset_bottom = 155.0
+offset_left = 125.0
+offset_top = 109.0
+offset_right = 165.0
+offset_bottom = 149.0
 mouse_filter = 1
 
 [node name="Panel" type="Panel" parent="AlgoPanel" unique_id=676022464]
@@ -68,6 +68,7 @@ offset_right = 642.0
 offset_bottom = 638.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0gvk8")
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="AlgoPanel/Panel" unique_id=552523761]
 modulate = Color(0.5729883, 0.5729883, 0.5729883, 1)

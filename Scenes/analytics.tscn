@@ -1,31 +1,54 @@
 [gd_scene format=3 uid="uid://u2j4wd8m3dai"]
 
+[ext_resource type="Script" uid="uid://dwy4f3pqme0p7" path="res://Code/analytics.gd" id="1_jsp1m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2rvw"]
+bg_color = Color(0.1494745, 0.14947453, 0.14947447, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.23211998, 0.23211983, 0.23211968, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43q55"]
+bg_color = Color(0.94271874, 0.77766526, 0.5025752, 1)
+
 [sub_resource type="Theme" id="Theme_2qnif"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsp1m"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b38dq"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.43472338, 0.9238903, 0.5603765, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2q5x"]
-bg_color = Color(0.9717755, 0.97177535, 0.97177535, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43q55"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwk8b"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqvxm"]
-bg_color = Color(0.98586935, 0.98586947, 0.98586935, 1)
+bg_color = Color(0.52156866, 0.8745098, 0.9764706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f4f8"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="Analytics" type="Control" unique_id=309233838]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b38dq"]
+bg_color = Color(0.43529412, 0.9254902, 0.56078434, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwk8b"]
+bg_color = Color(0.51639724, 0.8745991, 0.9761731, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqvxm"]
+bg_color = Color(0.98586935, 0.98586947, 0.98586935, 1)
+
+[node name="Analytics" type="Control" unique_id=309233838 node_paths=PackedStringArray("DramaBar", "EducationBar", "GamingBar", "HealthBar", "MusicBar", "PoliticalBar", "SportsBar", "TechnologyBar")]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_jsp1m")
+DramaBar = NodePath("VBoxContainer/Drama/ProgressBar")
+EducationBar = NodePath("VBoxContainer/EducationRow/ProgressBar")
+GamingBar = NodePath("VBoxContainer/Gaming/ProgressBar")
+HealthBar = NodePath("VBoxContainer/Health/ProgressBar")
+MusicBar = NodePath("VBoxContainer/MusicRow/ProgressBar")
+PoliticalBar = NodePath("VBoxContainer/PoliticalRow/ProgressBar")
+SportsBar = NodePath("VBoxContainer/SportsRow/ProgressBar")
+TechnologyBar = NodePath("VBoxContainer/Technology/ProgressBar")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=395080869]
 layout_mode = 1
@@ -40,16 +63,48 @@ theme_override_constants/separation = 8
 
 [node name="Title" type="Label" parent="VBoxContainer" unique_id=640742284]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Interest "
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.559)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 34
+text = "Shown Videos"
 horizontal_alignment = 1
+
+[node name="Drama" type="HBoxContainer" parent="VBoxContainer" unique_id=1027900594]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="CategoryLabel" type="Label" parent="VBoxContainer/Drama" unique_id=1089744546]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 19
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 21
+text = "Drama"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Drama" unique_id=1970298771]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_l2rvw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_43q55")
+value = 50.0
+show_percentage = false
 
 [node name="EducationRow" type="HBoxContainer" parent="VBoxContainer" unique_id=1708110514]
 layout_mode = 2
+theme_override_constants/separation = 40
 
 [node name="CategoryLabel" type="Label" parent="VBoxContainer/EducationRow" unique_id=700378474]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_constants/shadow_offset_x = 19
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 21
 text = "Education"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/EducationRow" unique_id=280099426]
@@ -57,118 +112,139 @@ custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_2qnif")
+theme_override_styles/background = SubResource("StyleBoxFlat_l2rvw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jsp1m")
-value = 50.0
-show_percentage = false
-
-[node name="PoliticalRow" type="HBoxContainer" parent="VBoxContainer" unique_id=726506669]
-layout_mode = 2
-
-[node name="CategoryLabel" type="Label" parent="VBoxContainer/PoliticalRow" unique_id=1385721762]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Political"
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/PoliticalRow" unique_id=893425106]
-custom_minimum_size = Vector2(200, 20)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_b38dq")
 value = 50.0
 show_percentage = false
 
 [node name="Gaming" type="HBoxContainer" parent="VBoxContainer" unique_id=939566041]
 layout_mode = 2
+theme_override_constants/separation = 40
 
 [node name="CategoryLabel" type="Label" parent="VBoxContainer/Gaming" unique_id=1750902948]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_constants/shadow_offset_x = 19
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 21
 text = "Gaming"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Gaming" unique_id=1555087060]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_l2rvw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_h2q5x")
-value = 50.0
-show_percentage = false
-
-[node name="MusicRow" type="HBoxContainer" parent="VBoxContainer" unique_id=621898348]
-layout_mode = 2
-
-[node name="CategoryLabel" type="Label" parent="VBoxContainer/MusicRow" unique_id=1774906720]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Music"
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MusicRow" unique_id=1983326920]
-custom_minimum_size = Vector2(200, 20)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_43q55")
-value = 50.0
-show_percentage = false
-
-[node name="Drama" type="HBoxContainer" parent="VBoxContainer" unique_id=1027900594]
-layout_mode = 2
-
-[node name="CategoryLabel" type="Label" parent="VBoxContainer/Drama" unique_id=1089744546]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Drama"
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Drama" unique_id=1970298771]
-custom_minimum_size = Vector2(200, 20)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_43q55")
-value = 50.0
-show_percentage = false
-
-[node name="SportsRow" type="HBoxContainer" parent="VBoxContainer" unique_id=8192381]
-layout_mode = 2
-
-[node name="CategoryLabel" type="Label" parent="VBoxContainer/SportsRow" unique_id=1432956116]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Sports"
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/SportsRow" unique_id=1355898341]
-custom_minimum_size = Vector2(200, 20)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_cwk8b")
-value = 50.0
-show_percentage = false
-
-[node name="Technology" type="HBoxContainer" parent="VBoxContainer" unique_id=843369282]
-layout_mode = 2
-
-[node name="CategoryLabel" type="Label" parent="VBoxContainer/Technology" unique_id=1728203330]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Technology"
-
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Technology" unique_id=967974165]
-custom_minimum_size = Vector2(200, 20)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_cqvxm")
 value = 50.0
 show_percentage = false
 
 [node name="Health" type="HBoxContainer" parent="VBoxContainer" unique_id=1342718766]
 layout_mode = 2
+theme_override_constants/separation = 40
 
 [node name="CategoryLabel" type="Label" parent="VBoxContainer/Health" unique_id=34202467]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_constants/shadow_offset_x = 19
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 21
 text = "Health"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Health" unique_id=1505260967]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_l2rvw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0f4f8")
+value = 50.0
+show_percentage = false
+
+[node name="MusicRow" type="HBoxContainer" parent="VBoxContainer" unique_id=621898348]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="CategoryLabel" type="Label" parent="VBoxContainer/MusicRow" unique_id=1774906720]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 19
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 21
+text = "Music"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MusicRow" unique_id=1983326920]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_l2rvw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_43q55")
+value = 50.0
+show_percentage = false
+
+[node name="PoliticalRow" type="HBoxContainer" parent="VBoxContainer" unique_id=726506669]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="CategoryLabel" type="Label" parent="VBoxContainer/PoliticalRow" unique_id=1385721762]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 19
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 21
+text = "Political"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/PoliticalRow" unique_id=893425106]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_l2rvw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b38dq")
+value = 50.0
+show_percentage = false
+
+[node name="SportsRow" type="HBoxContainer" parent="VBoxContainer" unique_id=8192381]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="CategoryLabel" type="Label" parent="VBoxContainer/SportsRow" unique_id=1432956116]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 19
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 21
+text = "Sports"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/SportsRow" unique_id=1355898341]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_l2rvw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cwk8b")
+value = 50.0
+show_percentage = false
+
+[node name="Technology" type="HBoxContainer" parent="VBoxContainer" unique_id=843369282]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="CategoryLabel" type="Label" parent="VBoxContainer/Technology" unique_id=1728203330]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 19
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 21
+text = "Tech"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Technology" unique_id=967974165]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_l2rvw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cqvxm")
 value = 50.0
 show_percentage = false

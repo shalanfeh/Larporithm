@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://xu806tmhap66"]
 
-[ext_resource type="Script" uid="uid://bv6bmi82e34rk" path="res://Scenes/searchbar.gd" id="1_038v7"]
+[ext_resource type="Script" uid="uid://bv6bmi82e34rk" path="res://Scenes/SearchBar/searchbar.gd" id="1_038v7"]
 
 [node name="SearchBar" type="Control" unique_id=726054166 node_paths=PackedStringArray("Intake", "EnterButton")]
 layout_mode = 3
