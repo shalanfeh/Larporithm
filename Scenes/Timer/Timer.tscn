@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dta10h3sipmig" path="res://assets/CircleWithHole.png" id="1_mdnnd"]
 [ext_resource type="Script" uid="uid://t8jyvjfkogm" path="res://Scenes/Timer/timer.gd" id="2_37beg"]
 [ext_resource type="AudioStream" uid="uid://30hi0bnlwbhj" path="res://assets/clock-tick-single-gfx-sounds-2-2-00-00.mp3" id="3_r2crm"]
+[ext_resource type="AudioStream" uid="uid://bfh7h5p1icwmv" path="res://assets/toaster oven ding - sound effect.mp3" id="4_mqn4o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u2uyp"]
 font_size = 180
@@ -12,7 +13,7 @@ shadow_size = 34
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(10, 10)
 
-[node name="Timer" type="TextureProgressBar" unique_id=63659985 node_paths=PackedStringArray("TimeKeeper", "Text", "SoundMaker")]
+[node name="Timer" type="TextureProgressBar" unique_id=63659985 node_paths=PackedStringArray("TimeKeeper", "Text", "SoundMaker", "GameEndSFX")]
 offset_right = 500.0
 offset_bottom = 500.0
 value = 99.0
@@ -25,6 +26,7 @@ script = ExtResource("2_37beg")
 TimeKeeper = NodePath("Timer")
 Text = NodePath("Label")
 SoundMaker = NodePath("AudioStreamPlayer")
+GameEndSFX = NodePath("AudioStreamPlayer2")
 
 [node name="Timer" type="Timer" parent="." unique_id=1919282389]
 autostart = true
@@ -41,3 +43,6 @@ vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=161980026]
 stream = ExtResource("3_r2crm")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1011758035]
+stream = ExtResource("4_mqn4o")

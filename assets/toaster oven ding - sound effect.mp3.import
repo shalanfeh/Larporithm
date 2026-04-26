@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfh7h5p1icwmv"
+path="res://.godot/imported/toaster oven ding - sound effect.mp3-2ccb24f599a126e9ed61c9d329b4e996.mp3str"
+
+[deps]
+
+source_file="res://assets/toaster oven ding - sound effect.mp3"
+dest_files=["res://.godot/imported/toaster oven ding - sound effect.mp3-2ccb24f599a126e9ed61c9d329b4e996.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

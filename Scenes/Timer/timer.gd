@@ -3,6 +3,7 @@ extends TextureProgressBar
 @export var TimeKeeper: Timer
 @export var Text: Label
 @export var SoundMaker: AudioStreamPlayer
+@export var GameEndSFX: AudioStreamPlayer
 
 #for smoothing
 @export var Multiplier: int = 10
@@ -45,6 +46,7 @@ func GameStarted() -> void:
 	TimeKeeper.start()
 
 func GameEnded() -> void:
+	GameEndSFX.play()
 	TimeKeeper.stop()
 
 func Timeout() -> void:
