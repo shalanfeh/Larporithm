@@ -36,7 +36,16 @@ func _ready() -> void:
 	
 	TimeKeeper.wait_time = Globals.GameValues.TickSpeed
 	TimeKeeper.timeout.connect(Timeout)
+	TimeKeeper.stop()
+	
+	Globals.GameStart.connect(GameStarted)
+	Globals.GameEnd.connect(GameEnded)
+
+func GameStarted() -> void:
 	TimeKeeper.start()
+
+func GameEnded() -> void:
+	TimeKeeper.stop()
 
 func Timeout() -> void:
 	if Globals.GameValues.TimeLeft <= 6:

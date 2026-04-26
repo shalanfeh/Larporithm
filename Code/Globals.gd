@@ -1,5 +1,8 @@
 extends Node
 
+signal GameStart()
+signal GameEnd()
+
 signal InputEntered(Entered: String)
 
 signal NewVideoDisplayed()
