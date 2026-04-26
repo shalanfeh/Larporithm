@@ -154,21 +154,21 @@ vertical_alignment = 1
 
 [node name="Tagline" type="RichTextLabel" parent="TheMenu" unique_id=1670863132]
 layout_mode = 0
-offset_left = 487.0
-offset_top = 311.0
-offset_right = 665.0
-offset_bottom = 334.0
+offset_left = 400.0
+offset_top = 276.0
+offset_right = 756.0
+offset_bottom = 364.0
 bbcode_enabled = true
 text = "[wave] [i]You are the algorithm."
 fit_content = true
-autowrap_mode = 0
+autowrap_mode = 3
 
 [node name="StartButton" type="Button" parent="TheMenu" unique_id=574046657]
 layout_mode = 0
 offset_left = 487.0
-offset_top = 356.0
+offset_top = 390.0
 offset_right = 665.0
-offset_bottom = 411.0
+offset_bottom = 445.0
 mouse_filter = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 15

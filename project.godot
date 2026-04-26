@@ -14,7 +14,6 @@ config/name="Larporithm"
 run/main_scene="uid://cx42470wsnygn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
-<<<<<<<Updatedupstreamrun/main_scene="uid://xu806tmhap66"
 
 [autoload]
 

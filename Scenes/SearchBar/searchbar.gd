@@ -5,6 +5,8 @@ extends Control
 
 func _ready() -> void:
 	Globals.GameStart.connect(OnGameStart)
+	EnterButton.pressed.connect(SubmitEntered)
+	Intake.text_submitted.connect(func(_entered: String): SubmitEntered())
 
 func OnGameStart() -> void:
 	Intake.grab_focus()
