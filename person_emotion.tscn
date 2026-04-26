@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://d08dhdft1kh7n"]
+
+[ext_resource type="Texture2D" uid="uid://c2pjkkebf37es" path="res://assets/AngryR.png" id="1_1nxlw"]
+[ext_resource type="Texture2D" uid="uid://bkq0v81s7y11m" path="res://assets/SadR.png" id="2_echvq"]
+[ext_resource type="Texture2D" uid="uid://cbl77q5whsl6a" path="res://assets/NeutralR.png" id="3_f23vd"]
+[ext_resource type="Texture2D" uid="uid://pmngiisljqwv" path="res://assets/HappyR.png" id="4_3gm25"]
+[ext_resource type="Texture2D" uid="uid://b3unt8uqaeslw" path="res://assets/VeryHappyR.png" id="5_2aec4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbd27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1nxlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_echvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f23vd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3gm25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2aec4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1060028745]
+position = Vector2(348.5, 332)
+scale = Vector2(0.44417864, 0.47049442)
+sprite_frames = SubResource("SpriteFrames_bbd27")
+frame_progress = 0.11356241
