@@ -121,7 +121,7 @@ layout_mode = 2
 [node name="CategoryLabel" type="Label" parent="VBoxContainer/Drama" unique_id=1089744546]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Music"
+text = "Drama"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/Drama" unique_id=1970298771]
 custom_minimum_size = Vector2(200, 20)
