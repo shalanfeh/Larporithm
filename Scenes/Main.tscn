@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cx42470wsnygn"]
+
+[ext_resource type="Texture2D" uid="uid://cy3carkr4n8l5" path="res://assets/DarkBiggerChecker2.png" id="1_r150o"]
+[ext_resource type="Texture2D" uid="uid://dmtuo5qvslxqw" path="res://assets/16_9.png" id="2_idj7w"]
+
+[node name="Main" type="Node2D" unique_id=269067533]
+
+[node name="Background" type="TextureRect" parent="." unique_id=485689185]
+z_index = -100
+offset_left = -393.0
+offset_top = -212.0
+offset_right = 1682.0
+offset_bottom = 1091.0
+texture = ExtResource("1_r150o")
+stretch_mode = 1
+
+[node name="Background2" type="TextureRect" parent="." unique_id=334254182]
+z_index = -99
+offset_right = 1152.0
+offset_bottom = 649.0
+texture = ExtResource("2_idj7w")
+expand_mode = 1
