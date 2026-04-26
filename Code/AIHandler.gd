@@ -4,7 +4,8 @@ class_name AIHandler
 signal title_evaluated(scores: Dictionary)
 signal evaluation_failed(message: String)
 
-const MODEL := "gemini-2.5-flash-lite"
+const MODEL := "inclusionai/ling-2.6-1t:free"
+const API_URL := "https://openrouter.ai/api/v1/chat/completions"
 const REQUEST_TIMEOUT := 15.0
 
 var http_request: HTTPRequest
@@ -22,56 +23,56 @@ func _on_input_entered(entered: String) -> void:
 
 func evaluate_title(title: String) -> void:
 	var prompt := """You are evaluating a player-created YouTube title for a game.
+
 Distribute exactly 100 integer points across the 8 genres based on how strongly the title fits each one.
-Higher points = stronger match. Use 0 for genres that do not apply. The total must equal exactly 100.
 
-Player title: "%s" """ % title
+Genres:
+- education
+- political
+- gaming
+- music
+- drama
+- sports
+- technology
+- health
 
-	# Schema forces the API to return *only* this exact JSON shape.
-	var response_schema := {
-		"type": "OBJECT",
-		"properties": {
-			"education":  { "type": "INTEGER" },
-			"political":  { "type": "INTEGER" },
-			"gaming":     { "type": "INTEGER" },
-			"music":      { "type": "INTEGER" },
-			"drama":      { "type": "INTEGER" },
-			"sports":     { "type": "INTEGER" },
-			"technology": { "type": "INTEGER" },
-			"health":     { "type": "INTEGER" },
-		},
-		"required": [
-			"education", "political", "gaming", "music",
-			"drama", "sports", "technology", "health"
-		],
-		"propertyOrdering": [
-			"education", "political", "gaming", "music",
-			"drama", "sports", "technology", "health"
-		]
-	}
+Rules:
+- Total MUST equal exactly 100
+- Integers only
+- Use 0 if not applicable
 
-	var url := "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent?key=%s" % [
-		MODEL,
-		ApiKeys.AIKey
-	]
+Return ONLY JSON.
+
+Player title: "%s"
+""" % title
 
 	var body := {
-		"contents": [
-			{ "parts": [ { "text": prompt } ] }
+		"model": MODEL,
+		"messages": [
+			{
+				"role": "user",
+				"content": prompt
+			}
 		],
-		"generationConfig": {
-			"responseMimeType": "application/json",
-			"responseSchema": response_schema,
-			"temperature": 0.2,
-			# Disable thinking on flash-lite for max speed
-			"thinkingConfig": { "thinkingBudget": 0 }
-		}
+		# This replaces your Gemini schema enforcement
+		"response_format": { "type": "json_object" },
+		"temperature": 0.2
 	}
 
-	var headers := ["Content-Type: application/json"]
+	var headers := [
+		"Content-Type: application/json",
+		"Authorization: Bearer " + ApiKeys.AIKey,
+		"HTTP-Referer: http://localhost",
+		"X-Title: Godot AI Game"
+	]
+
 	var err := http_request.request(
-		url, headers, HTTPClient.METHOD_POST, JSON.stringify(body)
+		API_URL,
+		headers,
+		HTTPClient.METHOD_POST,
+		JSON.stringify(body)
 	)
+
 	if err != OK:
 		evaluation_failed.emit("Could not start request (err %d)." % err)
 
@@ -85,27 +86,28 @@ func _on_request_completed(
 		evaluation_failed.emit("Network error: result " + str(result))
 		return
 
+	var response_text := body.get_string_from_utf8()
+
 	if response_code != 200:
-		print(body.get_string_from_utf8())
+		print(response_text)
 		evaluation_failed.emit("API error: " + str(response_code))
 		return
 
-	var response_text := body.get_string_from_utf8()
 	var response: Variant = JSON.parse_string(response_text)
 	if response == null or not response is Dictionary:
 		evaluation_failed.emit("Could not parse API response.")
 		return
 
-	# Defensive drilling — any missing key means an error/blocked response
-	if not response.has("candidates") or response["candidates"].is_empty():
+	# OpenRouter format
+	if not response.has("choices") or response["choices"].is_empty():
 		print("Unexpected response: ", response)
-		evaluation_failed.emit("No candidates returned.")
+		evaluation_failed.emit("No choices returned.")
 		return
 
-	var ai_text: String = response["candidates"][0]["content"]["parts"][0]["text"]
+	var ai_text: String = response["choices"][0]["message"]["content"]
 	print("Raw output: ", ai_text)
 
-	# Strip ```json fences just in case
+	# Clean possible markdown
 	ai_text = ai_text.strip_edges()
 	if ai_text.begins_with("```"):
 		ai_text = ai_text.trim_prefix("```json").trim_prefix("```").trim_suffix("```").strip_edges()
