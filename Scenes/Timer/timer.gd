@@ -57,7 +57,8 @@ func Timeout() -> void:
 	TimeKeeper.wait_time = Globals.GameValues.TickSpeed
 	Globals.TimeChange.emit()
 	
-	if Globals.GameValues.TimeLeft <= 0:
+	if Globals.GameValues.TimeLeft <= 0 and not Globals.GameValues.GameOver:
+		Globals.GameValues.GameOver = true
 		Globals.GameEnd.emit()
 
 func TimeChanged() -> void:

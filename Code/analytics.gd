@@ -35,11 +35,11 @@ func _ready() -> void:
 	
 	
 	for key in BarsArray:
-		BarsArray[key].max_value = 0
+		BarsArray[key].max_value = 100
 		BarsArray[key].value = Globals.GameValues.AnalyticPreferences[key]
 
 
 func _process(_delta: float) -> void:
 	for key in BarsArray:
-		BarsArray[key].max_value = lerp(BarsArray[key].max_value, float(Globals.GameValues.VideosWatched), 0.1)
+		BarsArray[key].max_value = 100
 		BarsArray[key].value = lerp(BarsArray[key].value, float(Globals.GameValues.AnalyticPreferences[key]), 0.1)

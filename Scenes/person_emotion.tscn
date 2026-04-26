@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://d1gbuevv0m3n1"]
+
+[ext_resource type="Texture2D" uid="uid://c2pjkkebf37es" path="res://assets/AngryR.png" id="1_1nxlw"]
+[ext_resource type="Texture2D" uid="uid://bkq0v81s7y11m" path="res://assets/SadR.png" id="2_echvq"]
+[ext_resource type="Texture2D" uid="uid://cbl77q5whsl6a" path="res://assets/NeutralR.png" id="3_f23vd"]
+[ext_resource type="Texture2D" uid="uid://pmngiisljqwv" path="res://assets/HappyR.png" id="4_3gm25"]
+[ext_resource type="Texture2D" uid="uid://b3unt8uqaeslw" path="res://assets/VeryHappyR.png" id="5_2aec4"]
+[ext_resource type="Script" uid="uid://1711onlf7co" path="res://Code/person_emotion.gd" id="6_emotion"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbd27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1nxlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_echvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f23vd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3gm25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2aec4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1060028745]
+position = Vector2(348.5, 332)
+scale = Vector2(0.44417864, 0.47049442)
+sprite_frames = SubResource("SpriteFrames_bbd27")
+script = ExtResource("6_emotion")
+frame_progress = 0.11356241
+
+[node name="MoodLabel" type="Label" parent="." unique_id=1137089254]
+offset_left = -300.0
+offset_top = 665.0
+offset_right = 300.0
+offset_bottom = 735.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 42
+text = "Mood: uncertain"
+horizontal_alignment = 1

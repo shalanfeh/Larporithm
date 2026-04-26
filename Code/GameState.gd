@@ -17,17 +17,19 @@ var ThumbnailPosition: VideoPositions
 
 var Preference: Preferences
 var AnalyticPreferences: Dictionary[String, int] = {
-	"drama" = 0,
-	"education" = 0,
-	"gaming" = 0,
-	"health" = 0,
-	"music" = 0,
-	"political" = 0,
-	"sports" = 0,
-	"technology" = 0
+	"drama" = 50,
+	"education" = 50,
+	"gaming" = 50,
+	"health" = 50,
+	"music" = 50,
+	"political" = 50,
+	"sports" = 50,
+	"technology" = 50
 }
 
 var EmotionScore: float = 50  #neutral
+var BadRecommendationStreak: int = 0
+var GoodRecommendationStreak: int = 0
 
 var VideosWatched: int = 0
 

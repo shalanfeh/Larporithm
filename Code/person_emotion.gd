@@ -1,23 +1,60 @@
 extends AnimatedSprite2D
 
+@onready var MoodLabel: Label = $MoodLabel
+
+var _base_scale: Vector2
+var _last_frame: int = -1
+var _pulse_tween: Tween
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: # Listen for time updates
+	_base_scale = scale
 	frame =  2
-	Globals.TimeChange.connect(_on_time_change)
+	Globals.EmotionChange.connect(_on_emotion_change)
+	Globals.TimeChange.connect(_on_emotion_change)
+	_on_emotion_change()
 
-# Updates face based on remaining time
-func _on_time_change() -> void:
-	var time_left: float = Globals.GameValues.TimeLeft
-	var game_time: float = Globals.GameValues.MaxTime
+# Updates face based on how the viewer feels.
+func _on_emotion_change() -> void:
+	var mood: float = Globals.GameValues.EmotionScore
+	var next_frame: int = 2
 	
-	# Map time ranges to emotional states
-	if time_left >= (game_time) * (3/4):
-		frame = 0 # very happy
-	elif time_left >= (game_time) * (1/2):
-		frame = 1 # happy
-	elif time_left >= (game_time) * (1/3):
-		frame = 2 # neutral
-	elif time_left >= (game_time) * (1/6):
-		frame = 3 # sad
+	# Sprite order: angry, sad, neutral, happy, very happy.
+	if mood >= 80:
+		next_frame = 4
+	elif mood >= 60:
+		next_frame = 3
+	elif mood >= 40:
+		next_frame = 2
+	elif mood >= 20:
+		next_frame = 1
 	else:
-		frame = 4 # angry
+		next_frame = 0
+	
+	if _last_frame != -1 and next_frame != _last_frame:
+		pulse_reaction()
+	
+	frame = next_frame
+	_last_frame = next_frame
+	
+	MoodLabel.text = "Mood: " + get_mood_label(mood)
+
+func pulse_reaction() -> void:
+	if _pulse_tween and _pulse_tween.is_valid():
+		_pulse_tween.kill()
+		scale = _base_scale
+	
+	_pulse_tween = create_tween()
+	_pulse_tween.tween_property(self, "scale", _base_scale * 1.08, 0.08)
+	_pulse_tween.tween_property(self, "scale", _base_scale, 0.14)
+
+func get_mood_label(mood: float) -> String:
+	if mood >= 80:
+		return "delighted"
+	if mood >= 60:
+		return "interested"
+	if mood >= 40:
+		return "uncertain"
+	if mood >= 20:
+		return "frustrated"
+	return "angry"
