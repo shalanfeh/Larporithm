@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Larporithm"
-run/main_scene="uid://d08dhdft1kh7n"
+run/main_scene="uid://cx42470wsnygn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 <<<<<<<Updatedupstreamrun/main_scene="uid://xu806tmhap66"
@@ -19,6 +19,10 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Globals="*uid://ci8corhklinhm"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [physics]
 

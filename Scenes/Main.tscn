@@ -7,12 +7,13 @@
 
 [node name="Background" type="TextureRect" parent="." unique_id=485689185]
 z_index = -100
-offset_left = -393.0
-offset_top = -212.0
-offset_right = 1682.0
-offset_bottom = 1091.0
+offset_left = -224.0
+offset_top = -171.0
+offset_right = 1399.0
+offset_bottom = 845.0
 texture = ExtResource("1_r150o")
 stretch_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Background2" type="TextureRect" parent="." unique_id=334254182]
 z_index = -99
@@ -20,3 +21,4 @@ offset_right = 1152.0
 offset_bottom = 649.0
 texture = ExtResource("2_idj7w")
 expand_mode = 1
+metadata/_edit_lock_ = true
