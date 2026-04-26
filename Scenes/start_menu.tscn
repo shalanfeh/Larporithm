@@ -1,20 +1,135 @@
 [gd_scene format=3 uid="uid://bw801euqau31y"]
 
-[ext_resource type="Script" path="res://Code/start_menu.gd" id="1_juhg0"]
+[ext_resource type="Script" uid="uid://c4gk6osimfhfh" path="res://Code/start_menu.gd" id="1_juhg0"]
+
+[sub_resource type="Animation" id="Animation_juhg0"]
+resource_name = "MenuFlyIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.4061262, 0.24999958),
+"update": 0,
+"values": [Vector2(-1000, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jgtwh"]
+resource_name = "MenuFlyOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.37892923, 0.0253829),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1000, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m6uer"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a43kq"]
+_data = {
+&"MenuFlyIn": SubResource("Animation_juhg0"),
+&"MenuFlyOut": SubResource("Animation_jgtwh"),
+&"RESET": SubResource("Animation_m6uer")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juhg0"]
 bg_color = Color(0.21770102, 0.21770105, 0.21770105, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.45840502, 0.45840508, 0.45840502, 0.6)
+shadow_size = 20
 
-[node name="StartMenu" type="Control" unique_id=854886031]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgtwh"]
+bg_color = Color(0.6047494, 0.99999994, 0.35373136, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.14406252, 0.14406258, 0.14406243, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a43kq"]
+bg_color = Color(0.45345467, 0.86162585, 4.0814877e-05, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.14406252, 0.14406258, 0.14406243, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6uer"]
+bg_color = Color(0.8354215, 0.9999997, 0.7502044, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.14406252, 0.14406258, 0.14406243, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 8
+
+[node name="StartMenu" type="Control" unique_id=854886031 node_paths=PackedStringArray("Animator", "StartButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 script = ExtResource("1_juhg0")
+Animator = NodePath("AnimationPlayer")
+StartButton = NodePath("TheMenu/StartButton")
 
-[node name="Panel" type="Panel" parent="." unique_id=1270866934]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1891596816]
+libraries/ = SubResource("AnimationLibrary_a43kq")
+
+[node name="TheMenu" type="Control" parent="." unique_id=2066345579]
+anchors_preset = 0
+offset_right = 39.99939
+offset_bottom = 40.0
+focus_mode = 2
+
+[node name="Panel" type="Panel" parent="TheMenu" unique_id=1270866934]
 layout_mode = 0
 offset_left = 361.0
 offset_top = 197.0
@@ -22,32 +137,43 @@ offset_right = 794.0
 offset_bottom = 473.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_juhg0")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2092993456]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=2124646154]
-layout_mode = 2
-theme_override_constants/separation = 30
-
-[node name="Title" type="RichTextLabel" parent="CenterContainer/VBoxContainer" unique_id=1023265224]
-layout_mode = 2
-theme_override_colors/default_color = Color(0.009604635, 0.009604635, 0.009604634, 1)
+[node name="Title" type="RichTextLabel" parent="TheMenu" unique_id=1023265224]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 143.0
+offset_right = 736.0
+offset_bottom = 350.0
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/bold_font_size = 50
 bbcode_enabled = true
-text = "[color=black][wave amp=50 freq=5] Logarithm [/wave][/color]"
+text = "
+[center][b][wave amp=50 freq=5] [rainbow freq=0.2 sat=1 val=1] Larporithm [/rainbow] [/wave][/b][/center] 
+ "
+fit_content = true
 vertical_alignment = 1
 
-[node name="Tagline" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1718876201]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "You are the algorithm."
-horizontal_alignment = 1
+[node name="Tagline" type="RichTextLabel" parent="TheMenu" unique_id=1670863132]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 311.0
+offset_right = 665.0
+offset_bottom = 334.0
+bbcode_enabled = true
+text = "[wave] [i]You are the algorithm."
+fit_content = true
+autowrap_mode = 0
 
-[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=574046657]
-layout_mode = 2
+[node name="StartButton" type="Button" parent="TheMenu" unique_id=574046657]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 356.0
+offset_right = 665.0
+offset_bottom = 411.0
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 28
-text = "Start"
+theme_override_styles/normal = SubResource("StyleBoxFlat_jgtwh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a43kq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m6uer")
+text = "Start!"

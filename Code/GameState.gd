@@ -7,6 +7,8 @@ var MaxTime: float = TimeLeft
 var TickSpeed: float = 1 #timer speed
 
 var Started: bool = false #is timer ticking?
+
+var GameStarted: bool = false
 var GameOver: bool = false #game over, timer hit 0
 
 var CurrentlyDisplayingVideo: bool = false

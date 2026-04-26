@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://co6ci87c4qej5"]
+
+[ext_resource type="Shader" uid="uid://42xl7oebtjt3" path="res://Code/BalatroBG.gdshader" id="1_4jnq0"]
+[ext_resource type="Script" uid="uid://bc1exy8f8kyis" path="res://Scenes/DoomScroller/DoomVid.gd" id="1_kio2i"]
+[ext_resource type="Texture2D" uid="uid://gcx2u3w62h3k" path="res://assets/DoomScrollVidGradient.png" id="3_byj1b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kio2i"]
+shader = ExtResource("1_4jnq0")
+shader_parameter/spin_rotation_speed = 0.5
+shader_parameter/move_speed = 7.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.87034494, 0.26711738, 0.25766784, 1)
+shader_parameter/colour_2 = Color(0.24780053, 0.24780053, 0.26006752, 1)
+shader_parameter/colour_3 = Color(0.086, 0.137, 0.145, 1)
+shader_parameter/contrast = 3.5
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = true
+
+[node name="DoomVid" type="Control" unique_id=937647911 node_paths=PackedStringArray("VideoName", "TuberName", "BG")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -652.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kio2i")
+VideoName = NodePath("VidName")
+TuberName = NodePath("TuberName")
+BG = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=724367753]
+material = SubResource("ShaderMaterial_kio2i")
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=323755533]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_byj1b")
+
+[node name="VidName" type="RichTextLabel" parent="." unique_id=708175175]
+layout_mode = 0
+offset_top = 608.0
+offset_right = 483.0
+offset_bottom = 650.0
+theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
+text = "[fade start=31] Enter a video title to start!"
+autowrap_mode = 0
+
+[node name="TuberName" type="RichTextLabel" parent="." unique_id=1204972935]
+layout_mode = 0
+offset_top = 569.0
+offset_right = 483.0
+offset_bottom = 611.0
+theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
+text = " [b] @Tutorial"
+autowrap_mode = 0

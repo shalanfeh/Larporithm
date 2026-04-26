@@ -5,9 +5,6 @@ signal GameEnd()
 
 signal InputEntered(Entered: String)
 
-signal NewVideoDisplayed()
-signal ThumbnailDisplayed()
-
 signal EmotionChange()
 
 signal TimeChange()

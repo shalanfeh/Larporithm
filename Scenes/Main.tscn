@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://cx42470wsnygn"]
 
 [ext_resource type="Texture2D" uid="uid://cy3carkr4n8l5" path="res://assets/DarkBiggerChecker2.png" id="1_r150o"]
+[ext_resource type="Script" uid="uid://bs81lpbjpvknt" path="res://Scenes/main.gd" id="1_vy5pj"]
 [ext_resource type="Texture2D" uid="uid://dmtuo5qvslxqw" path="res://assets/16_9.png" id="2_idj7w"]
-[ext_resource type="PackedScene" uid="uid://u2j4wd8m3dai" path="res://Scenes/analytics.tscn" id="3_v1gob"]
-[ext_resource type="PackedScene" path="res://Scenes/person_emotion.tscn" id="4_jw32o"]
-[ext_resource type="PackedScene" uid="uid://xu806tmhap66" path="res://Scenes/searchbar.tscn" id="5_50glp"]
 [ext_resource type="PackedScene" uid="uid://dt7ni6xcf7xmb" path="res://Scenes/Timer/Timer.tscn" id="6_vy5pj"]
+[ext_resource type="PackedScene" uid="uid://bw801euqau31y" path="res://Scenes/start_menu.tscn" id="7_jw32o"]
+[ext_resource type="PackedScene" uid="uid://d1ewovd4o2xga" path="res://Scenes/DoomScroller/doom_scroll.tscn" id="8_50glp"]
+[ext_resource type="PackedScene" uid="uid://c6dnmfjahkox2" path="res://Scenes/algo_panel.tscn" id="10_bmxlf"]
 
-[node name="Main" type="Node2D" unique_id=269067533]
+[node name="Main" type="Node2D" unique_id=269067533 node_paths=PackedStringArray("Scroller")]
+script = ExtResource("1_vy5pj")
+Scroller = NodePath("DoomScroll")
 
 [node name="Background" type="TextureRect" parent="." unique_id=485689185]
 z_index = -100
@@ -21,30 +24,41 @@ metadata/_edit_lock_ = true
 
 [node name="Background2" type="TextureRect" parent="." unique_id=334254182]
 z_index = -99
+z_as_relative = false
 offset_right = 1152.0
 offset_bottom = 649.0
 texture = ExtResource("2_idj7w")
 expand_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Analytics (Control)" parent="." unique_id=309233838 instance=ExtResource("3_v1gob")]
-offset_left = 967.0
-offset_top = 454.0
-offset_right = 1007.0
-offset_bottom = 494.0
-
-[node name="AnimatedSprite2D" parent="." unique_id=1060028745 instance=ExtResource("4_jw32o")]
-position = Vector2(155.00002, 150)
-scale = Vector2(0.23325352, 0.2416268)
-
-[node name="Control" parent="." unique_id=726054166 instance=ExtResource("5_50glp")]
-offset_left = 7.0
-offset_top = -12.0
-offset_right = 7.0
-offset_bottom = -12.0
+[node name="StartMenu" parent="." unique_id=854886031 instance=ExtResource("7_jw32o")]
+top_level = true
+z_index = 100
+metadata/_edit_lock_ = true
 
 [node name="Timer" parent="." unique_id=63659985 instance=ExtResource("6_vy5pj")]
-offset_left = 260.0
-offset_top = 80.0
-offset_right = 760.0
-offset_bottom = 580.0
+offset_left = 860.0
+offset_top = 505.0
+offset_right = 980.0
+offset_bottom = 625.0
+
+[node name="DoomScroll" parent="." unique_id=1808220939 instance=ExtResource("8_50glp")]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = 0.0
+grow_horizontal = 0
+metadata/_edit_lock_ = true
+
+[node name="AlgoPanel" parent="." unique_id=602969597 instance=ExtResource("10_bmxlf")]
+z_index = -10
+z_as_relative = false
+offset_left = 500.0
+offset_right = 500.0
+
+[node name="ColorRect" type="ColorRect" parent="AlgoPanel" unique_id=153027889]
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 648.0
+color = Color(0.101867564, 0.10186755, 0.10186755, 1)

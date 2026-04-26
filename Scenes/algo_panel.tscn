@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://c6dnmfjahkox2"]
+
+[ext_resource type="PackedScene" uid="uid://xu806tmhap66" path="res://Scenes/searchbar.tscn" id="1_fn47h"]
+[ext_resource type="Shader" uid="uid://42xl7oebtjt3" path="res://Code/BalatroBG.gdshader" id="1_mk1p8"]
+[ext_resource type="PackedScene" uid="uid://u2j4wd8m3dai" path="res://Scenes/analytics.tscn" id="2_exmbs"]
+[ext_resource type="Texture2D" uid="uid://cy3carkr4n8l5" path="res://assets/DarkBiggerChecker2.png" id="4_50gf5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3gjn3"]
+shader = ExtResource("1_mk1p8")
+shader_parameter/spin_rotation_speed = 2.0
+shader_parameter/move_speed = 2.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.22256696, 0.030961886, 0.024835955, 1)
+shader_parameter/colour_2 = Color(0, 0, 0, 1)
+shader_parameter/colour_3 = Color(0.33380255, 0.4615003, 0.48073155, 1)
+shader_parameter/contrast = 3.5
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gvk8"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+shadow_size = 7
+
+[node name="Control" type="Control" unique_id=2088765525]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="AlgoPanel" type="ColorRect" parent="." unique_id=1148386575]
+z_index = -10
+material = SubResource("ShaderMaterial_3gjn3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 612.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SearchBar" parent="AlgoPanel" unique_id=726054166 instance=ExtResource("1_fn47h")]
+z_index = 10
+layout_mode = 1
+offset_left = 52.0
+offset_top = 27.0
+offset_right = -76.0
+offset_bottom = -579.0
+
+[node name="Analytics (Control)" parent="AlgoPanel" unique_id=309233838 instance=ExtResource("2_exmbs")]
+z_index = 10
+layout_mode = 0
+offset_left = 163.0
+offset_top = 115.0
+offset_right = 203.0
+offset_bottom = 155.0
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="AlgoPanel" unique_id=676022464]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 642.0
+offset_bottom = 638.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0gvk8")
+
+[node name="TextureRect" type="TextureRect" parent="AlgoPanel/Panel" unique_id=552523761]
+modulate = Color(0.5729883, 0.5729883, 0.5729883, 1)
+layout_mode = 0
+offset_right = 632.0
+offset_bottom = 628.0
+mouse_filter = 2
+texture = ExtResource("4_50gf5")
+stretch_mode = 1
+metadata/_edit_lock_ = true

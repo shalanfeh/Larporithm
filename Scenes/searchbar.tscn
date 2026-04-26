@@ -1,25 +1,32 @@
 [gd_scene format=3 uid="uid://xu806tmhap66"]
 
-[node name="Control" type="Control" unique_id=726054166]
+[ext_resource type="Script" uid="uid://bv6bmi82e34rk" path="res://Scenes/searchbar.gd" id="1_038v7"]
+
+[node name="SearchBar" type="Control" unique_id=726054166 node_paths=PackedStringArray("Intake", "EnterButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_038v7")
+Intake = NodePath("LineEdit")
+EnterButton = NodePath("Button")
 
 [node name="LineEdit" type="LineEdit" parent="." unique_id=542811550]
 layout_mode = 0
-offset_left = 617.0
-offset_top = 18.0
-offset_right = 1097.0
-offset_bottom = 58.0
+offset_right = 480.0
+offset_bottom = 40.0
+focus_next = NodePath(".")
 placeholder_text = "Input for video goes here"
+keep_editing_on_text_submit = true
+backspace_deletes_composite_character_enabled = true
+clear_button_enabled = true
+caret_blink = true
 
 [node name="Button" type="Button" parent="." unique_id=434703112]
 layout_mode = 0
-offset_left = 1108.0
-offset_top = 18.0
-offset_right = 1142.0
-offset_bottom = 58.0
+offset_left = 490.0
+offset_right = 524.0
+offset_bottom = 40.0
 text = ">"

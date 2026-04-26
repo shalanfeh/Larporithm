@@ -1,10 +1,14 @@
 extends Control
 
+@export var Animator: AnimationPlayer
+@export var StartButton: Button
 
 func _ready() -> void:
-	$CenterContainer/VBoxContainer/StartButton.pressed.connect(_on_start_pressed)
+	Animator.play("MenuFlyIn")
+	StartButton.pressed.connect(StartButtonPressed)
 
-
-func _on_start_pressed() -> void:
-	# Switch to the main game scene
-	get_tree().change_scene_to_file("res://Scenes/Main.tscn")
+func StartButtonPressed() -> void:
+	if (Globals.GameValues.GameStarted == false) or (Globals.GameValues.GameStarted == true and Globals.GameValues.GameOver == true):
+		Globals.GameValues.GameStarted = true
+		Animator.play("MenuFlyOut")
+		Globals.GameStart.emit()

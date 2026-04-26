@@ -56,6 +56,9 @@ func Timeout() -> void:
 	Globals.GameValues.TimeLeft = Globals.GameValues.TimeLeft - 1
 	TimeKeeper.wait_time = Globals.GameValues.TickSpeed
 	Globals.TimeChange.emit()
+	
+	if Globals.GameValues.TimeLeft <= 0:
+		Globals.GameEnd.emit()
 
 func TimeChanged() -> void:
 	UpdateText()
